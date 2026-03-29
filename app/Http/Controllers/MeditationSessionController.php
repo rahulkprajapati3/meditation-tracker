@@ -49,4 +49,14 @@ class MeditationSessionController extends Controller
         }
         return redirect()->route('dashboard')->with('success', 'Meditation session logged successfully!');
     }
+
+    // apihistory
+    public function apiHistory()
+    {
+        $sessions = auth()->user()->meditationSessions()->orderBy('session_date', 'desc')->get();
+        return response()->json([
+            'success' => true,
+            'data' => $sessions
+        ], 200);
+    }
 }
