@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MeditationSession extends Model
 {
-    // Security ke liye fillable variables define kiye hain
     protected $fillable = [
         'user_id', 
         'session_date', 
@@ -14,7 +13,7 @@ class MeditationSession extends Model
         'notes'
     ];
 
-    // Ek session hamesha ek User ko belong karta hai
+    // one session always belongs to one user, so we define inverse relationship
     public function user()
     {
         return $this->belongsTo(User::class);
