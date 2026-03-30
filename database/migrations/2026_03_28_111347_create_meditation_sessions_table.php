@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('meditation_sessions', function (Blueprint $table) {
             $table->id();
-            // user_id batayega ki yeh session kis user ka hai
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            
-            $table->date('session_date'); // Kis din dhyan kiya
-            $table->integer('duration_minutes'); // Kitne minute kiya
-            $table->text('notes')->nullable(); // Optional notes
+            $table->date('session_date'); 
+            $table->integer('duration_minutes'); 
+            $table->text('notes')->nullable();
             
             $table->timestamps();
         });
